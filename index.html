@@ -1,0 +1,79 @@
+""<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animated Buttons & LocalStorage</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: whitesmoke;
+            font-family: Arial, sans-serif;
+        }
+        
+        .container {
+            text-align: center;
+        }
+
+        button {
+            background-color: skyblue;
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 8px;
+            font-size: 18px;
+            cursor: pointer;
+            margin: 10px;
+            transition: transform 0.3s ease, background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: navy;
+            transform: scale(1.05);
+        }
+
+        img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            transition: transform 0.5s ease;
+        }
+
+        img.animate {
+            transform: rotate(360deg);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <button onclick="storePreference()">Save Preference</button>
+        <button onclick="loadPreference()">Load Preference</button>
+        <br>
+        <img id="image" src="https://via.placeholder.com/150" onclick="animateImage()" alt="Placeholder Image">
+    </div>
+
+    <script>
+        // Function to store user preference
+        function storePreference() {
+            localStorage.setItem('preference', 'Button Clicked!');
+            alert('Preference Saved!');
+        }
+
+        // Function to load user preference
+        function loadPreference() {
+            const preference = localStorage.getItem('preference');
+            alert(preference ? preference : 'No preference found.');
+        }
+
+        // Function to animate image
+        function animateImage() {
+            const image = document.getElementById('image');
+            image.classList.toggle('animate');
+        }
+    </script>
+</body>
+</html>
